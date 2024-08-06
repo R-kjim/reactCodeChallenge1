@@ -1,7 +1,7 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList({items}) {
+function TransactionsList({items,dataHandler}) {
  
 
   return (

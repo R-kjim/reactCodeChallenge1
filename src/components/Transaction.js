@@ -1,10 +1,11 @@
 import React from "react";
 
 function Transaction({items1}) {
+ 
    //map through items and return a table of list
    const displayItems=items1.map((item)=>{
     return (
-      <tr key={item.id}>
+      <tr key={item.id} value={item.id} name='name'>
       <td>{item.date}</td>
       <td>{item.description}</td>
       <td>{item.category}</td>
@@ -12,6 +13,7 @@ function Transaction({items1}) {
     </tr>
     )
   })
+
   return (
     <>{displayItems}</>
   );

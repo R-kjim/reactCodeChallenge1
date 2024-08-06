@@ -6,13 +6,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function AccountContainer() {
-  // const [newArray,arrayFn]=useState(false)
-//  const [situation,situationFn]=useState()
   const [data,dataFn]=useState([])//sets state for dta to be fetched to an empty array
   const [word,wordFn]=useState('')//sets state for search string in Search
   
+  data.sort((a, b) => a.category.localeCompare(b.category)) //sort the list based on  category
+
   //use Effect to fetch data from our database
-  const fetchData=useEffect(()=>{
+  useEffect(()=>{
     fetch("http://localhost:8001/transactions")
     .then(res=>res.json())
     .then(data=>dataFn(data))//after fetching, state of data is assigned the fetched data
@@ -26,7 +26,6 @@ function AccountContainer() {
   //filter what is rendered on Transaction List based on search
   const filterSearch=data.filter((item)=>{
     if(item.description.toLowerCase().includes(word.toLowerCase()) || item.category.toLowerCase().includes(word.toLowerCase())) return item//displays items based on partial search
-    else if(word==='') return true;
   })
 
 
@@ -43,7 +42,6 @@ function AccountContainer() {
       amount:event.target.amount.value
     }
     const updatedArr=[...data,newObj]
-    // dataFn(updatedArr)
     fetch("http://localhost:8001/transactions",{
       method:"POST",
       body:JSON.stringify(newObj),
@@ -61,7 +59,7 @@ function AccountContainer() {
     <div>
       <Search handleSearch={handleSearchFn}/>
       <AddTransactionForm submitHandle={submitFn}/>
-      <TransactionsList items={filterSearch}/>
+      <TransactionsList items={filterSearch} dataHandler={dataFn}/>
     </div>
   );
 }
