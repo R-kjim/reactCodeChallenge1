@@ -85,46 +85,11 @@
       "amount": -975
     },
     {
-      "id": "13",
+      "id": 13,
       "date": "2024-07-28",
       "description": "House Cleaning",
       "category": "Housing",
-      "amount": "100"
-    },
-    {
-      "id": "14",
-      "date": "2024-07-28",
-      "description": "Laundry Charges",
-      "category": "Laundry",
-      "amount": "500"
-    },
-    {
-      "id": "15",
-      "date": "2024-07-29",
-      "description": "Horse Riding",
-      "category": "Leisure",
-      "amount": "1000"
-    },
-    {
-      "id": "16",
-      "date": "2024-08-08",
-      "description": "House Cleaning",
-      "category": "Laundry",
-      "amount": "50"
-    },
-    {
-      "id": 17,
-      "date": "2024-07-29",
-      "description": "Family Platter",
-      "category": "Food",
-      "amount": "2000"
-    },
-    {
-      "id": 18,
-      "date": "2024-07-29",
-      "description": "Bouncing castles",
-      "category": "Leisure",
-      "amount": "3000"
+      "amount": "800"
     }
   ]
 }
