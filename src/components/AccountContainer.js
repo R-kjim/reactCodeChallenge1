@@ -20,13 +20,18 @@ function AccountContainer() {
 
   //define a function handleSearchFn that will handlechange of an input in Search and change state of word
   function handleSearchFn(event){
-    wordFn(event.target.value)//state of word changes to the input value
+    // wordFn(event.target.value)//state of word changes to the input value
+    wordFn(event.target.value)
   }
 
   //filter what is rendered on Transaction List based on search
-  const filterSearch=data.filter((item)=>{
-    if(item.description.toLowerCase().includes(word.toLowerCase()) || item.category.toLowerCase().includes(word.toLowerCase())) return item//displays items based on partial search
-  })
+    let filterSearch=data.filter((item)=>{
+      if(item.description.toLowerCase().includes(word.toLowerCase()) || item.category.toLowerCase().includes(word.toLowerCase())) return item//displays items based on partial search
+      else if(word==='') return true
+    })
+  
+  
+  
 
 
   
@@ -35,7 +40,6 @@ function AccountContainer() {
     event.preventDefault()
 
     const newObj={
-      id:data.length+1,
       date:event.target.date.value,
       description:event.target.description.value,
       category:event.target.category.value,
@@ -50,7 +54,7 @@ function AccountContainer() {
       }
     })
     .then(res=>{
-      if(res.ok===true){dataFn(updatedArr)}
+      if(res.ok===true){window.location.reload()}
     })
     event.target.reset()
   }
@@ -59,7 +63,7 @@ function AccountContainer() {
     <div>
       <Search handleSearch={handleSearchFn}/>
       <AddTransactionForm submitHandle={submitFn}/>
-      <TransactionsList items={filterSearch} dataHandler={dataFn}/>
+      <TransactionsList items={filterSearch}/>
     </div>
   );
 }

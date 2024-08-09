@@ -5,6 +5,7 @@ function Transaction({items1}) {
 //function to delete a transaction
   function handleDelete(event){
     let transactionId=event.target.value
+    console.log(transactionId)
     fetch(`http://localhost:8001/transactions/${transactionId}`,{
       method:"DELETE",
       headers:{
